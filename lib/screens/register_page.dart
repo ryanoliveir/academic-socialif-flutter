@@ -2,24 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:social_if/components/button.dart';
 import 'package:social_if/components/input.dart';
 
-class Login extends StatefulWidget {
+
+
+class Register extends StatefulWidget {
+
    final Function()? onTap;
 
-  const Login({
+  const Register({
     required this.onTap,
     super.key
   });
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _LoginState extends State<Login> {
-
- 
+class _RegisterState extends State<Register> {
 
   final _emailInputController = TextEditingController();
   final _passwordInputController = TextEditingController();
+  final _confirmPasswordInputController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +41,7 @@ class _LoginState extends State<Login> {
                 // Message
         
                 const SizedBox(height: 50),
-                const Text('Welcome Student'),
+                const Text('Lets create a account'),
         
                 const SizedBox(height: 25),
                 //Logo
@@ -60,20 +62,27 @@ class _LoginState extends State<Login> {
                 ),
 
                 const SizedBox(height: 10),
+
+                 Input(
+                  controller: _confirmPasswordInputController, 
+                  hintText: "Confirm your password", 
+                  isObscureText: true
+                ),
+
+                const SizedBox(height: 10),
                 
-                Button(onTap: (){}, text: 'Sign in'),
+                Button(onTap: (){}, text: 'Sign up'),
 
                  const SizedBox(height: 10),
 
                  Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                  const Text('Doesn\'t have account ?'),
+                  const Text('Already have a account ?'),
                   GestureDetector(
                     onTap: widget.onTap,
-                    child:const Text(' Register now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                    child:const Text(' Login now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
                   ),
-                
                 ],)
                 
               ],
@@ -84,3 +93,6 @@ class _LoginState extends State<Login> {
     );
   }
 }
+
+
+
