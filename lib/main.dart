@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:social_if/screens/auth_switch.dart';
+import 'package:social_if/auth/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
+void main() async {
 
-void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   runApp(const MyApp());
 }
 
@@ -18,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const AuthSwitch(),
+      home: const Auth(),
     );
   }
 }

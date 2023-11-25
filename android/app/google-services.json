@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399730251063",
+    "project_id": "social-if",
+    "storage_bucket": "social-if.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399730251063:android:a19b880792044d514af6b2",
+        "android_client_info": {
+          "package_name": "com.example.social_if"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuIQvAk-Uj3h04n5-DBzGFQYeiYv9xnCo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
