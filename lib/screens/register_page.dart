@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:social_if/components/button.dart';
 import 'package:social_if/components/input.dart';
@@ -23,6 +24,55 @@ class _RegisterState extends State<Register> {
   final _passwordInputController = TextEditingController();
   final _confirmPasswordInputController = TextEditingController();
 
+
+  void signUp () async {
+
+
+    // BuildContext? localContext = context;
+
+    showDialog(context: context, 
+    builder: (context) => const Center(
+      child: CircularProgressIndicator(),
+    ),
+  
+    );
+
+
+    if(_passwordInputController.text !=_confirmPasswordInputController.text){
+      Navigator.pop(context);
+      registerError("Passwors don't match");
+      return;
+    }
+
+
+    try {
+
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: _emailInputController.text, 
+      password: _passwordInputController.text
+      );
+
+      if(context.mounted) Navigator.pop(context);
+
+    } on FirebaseAuthException catch(e){
+       if(context.mounted) Navigator.pop(context);
+      registerError(e.code);
+    }
+   
+  }
+
+
+  void registerError (String message){
+    showDialog(context: context, 
+    builder: (context) => AlertDialog(
+      title: Text(message),
+    )
+    );
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,61 +81,63 @@ class _RegisterState extends State<Register> {
         child:  Padding(
           padding: const EdgeInsets.all(25.0),
           child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-        
-           
-                //Logo
-                const Icon(Icons.lock, size: 100),
-                // Message
-        
-                const SizedBox(height: 50),
-                const Text('Lets create a account'),
-        
-                const SizedBox(height: 25),
-                //Logo
-        
-        
-                Input(
-                  controller: _emailInputController, 
-                  hintText: "Your e-mail", 
-                  isObscureText: false
-                ),
-
-                const SizedBox(height: 10),
-                
-                Input(
-                  controller: _passwordInputController, 
-                  hintText: "Your password", 
-                  isObscureText: true
-                ),
-
-                const SizedBox(height: 10),
-
-                 Input(
-                  controller: _confirmPasswordInputController, 
-                  hintText: "Confirm your password", 
-                  isObscureText: true
-                ),
-
-                const SizedBox(height: 10),
-                
-                Button(onTap: (){}, text: 'Sign up'),
-
-                 const SizedBox(height: 10),
-
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                  const Text('Already have a account ?'),
-                  GestureDetector(
-                    onTap: widget.onTap,
-                    child:const Text(' Login now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                    
+                       
+                  //Logo
+                  const Icon(Icons.lock, size: 100),
+                  // Message
+                    
+                  const SizedBox(height: 50),
+                  const Text('Lets create a account'),
+                    
+                  const SizedBox(height: 25),
+                  //Logo
+                    
+                    
+                  Input(
+                    controller: _emailInputController, 
+                    hintText: "Your e-mail", 
+                    isObscureText: false
                   ),
-                ],)
-                
-              ],
+            
+                  const SizedBox(height: 10),
+                  
+                  Input(
+                    controller: _passwordInputController, 
+                    hintText: "Your password", 
+                    isObscureText: true
+                  ),
+            
+                  const SizedBox(height: 10),
+            
+                   Input(
+                    controller: _confirmPasswordInputController, 
+                    hintText: "Confirm your password", 
+                    isObscureText: true
+                  ),
+            
+                  const SizedBox(height: 10),
+                  
+                  Button(onTap: signUp, text: 'Sign up'),
+            
+                   const SizedBox(height: 10),
+            
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    const Text('Already have a account ?'),
+                    GestureDetector(
+                      onTap: widget.onTap,
+                      child:const Text(' Login now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                    ),
+                  ],)
+                  
+                ],
+              ),
             ),
           ),
         ),

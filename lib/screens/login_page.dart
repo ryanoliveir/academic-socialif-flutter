@@ -24,10 +24,43 @@ class _LoginState extends State<Login> {
 
 
   void signIn () async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
+
+
+    BuildContext? localContext = context;
+
+    showDialog(context: context, 
+    builder: (context) => const Center(
+      child: CircularProgressIndicator(),
+    ),
+  
+    );
+
+
+    try {
+
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailInputController.text, 
-      password: _passwordInputController.text);
+      password: _passwordInputController.text
+      );
+
+      if(localContext.mounted) Navigator.pop(context);
+
+    } on FirebaseAuthException {
+       if(localContext.mounted) Navigator.pop(context);
+      loginError('Check your email and password');
+    }
+   
   }
+
+
+  void loginError (String message){
+    showDialog(context: context, 
+    builder: (context) => AlertDialog(
+      title: Text(message),
+    )
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
