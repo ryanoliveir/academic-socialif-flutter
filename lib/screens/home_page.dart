@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:social_if/components/drawer_custom.dart';
 import 'package:social_if/components/input.dart';
 import 'package:social_if/components/post_card.dart';
+import 'package:social_if/screens/profile_page.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -37,7 +39,16 @@ class _HomeState extends State<Home> {
 
   }
 
-  
+  void navigateToProfilePage(){
+    Navigator.pop(context);
+
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder:  (context) => const Profile()
+      )
+    );
+  }
  
 
   void singOut() {
@@ -49,20 +60,25 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         backgroundColor: Colors.grey[900],
         centerTitle: true,
         title: const Text(
           'Social IF',
           style: TextStyle(color: Colors.white),
         ),
-        actions: [
-          IconButton(
-              onPressed: singOut,
-              icon: const Icon(
-                Icons.logout,
-                color: Colors.white,
-              ))
-        ],
+        // actions: [
+        //   IconButton(
+        //       onPressed: singOut,
+        //       icon: const Icon(
+        //         Icons.logout,
+        //         color: Colors.white,
+        //       ))
+        // ],
+      ),
+      drawer:  DrawerCustom(
+        onProfileTap: navigateToProfilePage,
+        onLogoutTap:  singOut,
       ),
       body: Center(
         child: Column(
