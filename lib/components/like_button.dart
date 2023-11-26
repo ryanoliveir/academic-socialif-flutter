@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 class LikeButton extends StatelessWidget {
 
   final bool isLiked;
-  void Function()? onTap;
+  final void Function()? onTap;
 
-   LikeButton({
+  const LikeButton({
     required this.isLiked,
     required this.onTap,
     super.key
