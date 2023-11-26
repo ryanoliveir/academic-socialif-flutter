@@ -24,7 +24,8 @@ class _HomeState extends State<Home> {
         FirebaseFirestore.instance.collection("users_posts").add({
           'userEmail': currentUser.email,
           'message': _textPost.text,
-          'timestamp': Timestamp.now()
+          'timestamp': Timestamp.now(),
+          'likes': []
         });
 
     }
@@ -81,7 +82,9 @@ class _HomeState extends State<Home> {
                       final post = snapshot.data!.docs[index];
                       return PostCard(
                           message: post['message'], 
-                          user: post['userEmail']
+                          user: post['userEmail'],
+                          postId: post.id,
+                          likes: List<String>.from(post['likes'] ?? [])
                         );
                     },);
                   } else if (snapshot.hasError){
