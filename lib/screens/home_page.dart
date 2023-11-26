@@ -130,7 +130,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
             ),
-            Text("Loggin in as:${currentUser.email!}")
+            // Text("Loggin in as:${currentUser.email!}")
       
         ]),
       ),
