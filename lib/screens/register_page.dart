@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:social_if/components/button.dart';
 import 'package:social_if/components/input.dart';
 
@@ -29,7 +30,7 @@ class _RegisterState extends State<Register> {
   void signUp () async {
 
 
-    // BuildContext? localContext = context;
+    BuildContext? localContext = context;
 
     showDialog(context: context, 
     builder: (context) => const Center(
@@ -61,14 +62,15 @@ class _RegisterState extends State<Register> {
         .doc(userCredential.user!.email)
         .set({
           'username': _emailInputController.text.split('@')[0],
-          'bio': 'Empty bio...'
+          'bio': 'Empty bio...',
+          'profileImageURL': ''
         });
 
 
-      if(context.mounted) Navigator.pop(context);
+      if(localContext.mounted) Navigator.pop(context);
 
     } on FirebaseAuthException catch(e){
-       if(context.mounted) Navigator.pop(context);
+       if(localContext.mounted) Navigator.pop(context);
       registerError(e.code);
     }
    
@@ -89,7 +91,7 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child:  Padding(
           padding: const EdgeInsets.all(25.0),
@@ -145,7 +147,7 @@ class _RegisterState extends State<Register> {
                     const Text('Already have a account ?'),
                     GestureDetector(
                       onTap: widget.onTap,
-                      child:const Text(' Login now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                      child: Text(' Login now', style: TextStyle(fontWeight: FontWeight.bold, color: HexColor('#4CAF50'))),
                     ),
                   ],)
                   

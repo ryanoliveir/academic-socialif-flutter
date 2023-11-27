@@ -229,7 +229,7 @@ class _PostCardState extends State<PostCard> {
 
                 return Comment(
                     text: commentData['content'], 
-                    user: commentData['author'], 
+                    user: commentData['author'].split('@')[0], 
                     time:  formatData(commentData['time'])
                   );
               }).toList()

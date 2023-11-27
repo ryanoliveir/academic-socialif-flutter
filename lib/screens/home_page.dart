@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:social_if/components/drawer_custom.dart';
 import 'package:social_if/components/input.dart';
 import 'package:social_if/components/post_card.dart';
@@ -127,7 +128,7 @@ class _HomeState extends State<Home> {
                   ),
                   IconButton(
                     onPressed: makePost, 
-                    icon: const Icon(Icons.send)
+                    icon: Icon(Icons.send, color: HexColor('#4CAF50'))
                   )
                 ],
               ),

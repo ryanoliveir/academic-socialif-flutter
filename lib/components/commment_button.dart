@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class CommentButton extends StatelessWidget {
 
@@ -16,7 +17,7 @@ class CommentButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: const Icon(Icons.comment, color: Colors.grey),
+      child: Icon(Icons.comment, color: HexColor('#4CAF50'),),
     );
   }
 }

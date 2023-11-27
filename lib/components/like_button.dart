@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class LikeButton extends StatelessWidget {
 
@@ -20,7 +21,7 @@ class LikeButton extends StatelessWidget {
 
       child: Icon(
         isLiked? Icons.favorite: Icons.favorite_outline,
-        color: isLiked? Colors.red: Colors.grey
+        color: isLiked? HexColor('#4CAF50'): Colors.grey
         ),
     );
   }

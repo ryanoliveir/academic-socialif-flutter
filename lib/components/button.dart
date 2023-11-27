@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 class Button extends StatelessWidget {
@@ -18,7 +19,7 @@ class Button extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(25),
         decoration:  BoxDecoration(
-          color: Colors.black,
+          color: HexColor('#4CAF50'),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(child: Text(text, style: const TextStyle(color: Colors.white,fontSize: 16, fontWeight: FontWeight.bold))),

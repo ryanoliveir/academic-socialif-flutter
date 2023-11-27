@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 
 
@@ -20,12 +21,14 @@ class Input extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: isObscureText,
+      cursorColor: Colors.white,
       decoration: InputDecoration(
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.white)
+        
+        enabledBorder:  OutlineInputBorder(
+          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary)
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Theme.of(context).colorScheme.secondary)
+          borderSide: BorderSide(color: HexColor('#4CAF50'))
         ),
         fillColor: Theme.of(context).colorScheme.primary,
         filled: true,

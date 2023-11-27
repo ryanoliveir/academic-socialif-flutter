@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:social_if/components/button.dart';
 import 'package:social_if/components/input.dart';
 
@@ -65,7 +66,7 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child:  Padding(
           padding: const EdgeInsets.all(25.0),
@@ -113,7 +114,7 @@ class _LoginState extends State<Login> {
                     const Text('Doesn\'t have account ?'),
                     GestureDetector(
                       onTap: widget.onTap,
-                      child:const Text(' Register now', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
+                      child: Text(' Register now', style: TextStyle(fontWeight: FontWeight.bold, color: HexColor('#4CAF50'))),
                     ),
                   
                   ],)

@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 class TextBox extends StatelessWidget {
 
@@ -31,7 +32,7 @@ class TextBox extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(sectionName, style: TextStyle(color: Colors.grey[500])),
-              IconButton(onPressed: onTap, icon: Icon(Icons.settings, color: Colors.grey[400]))
+              IconButton(onPressed: onTap, icon: Icon(Icons.settings, color: HexColor('#4CAF50')))
             ]
           ),
           Text(text),
