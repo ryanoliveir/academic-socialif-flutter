@@ -17,6 +17,7 @@ class _HomeState extends State<Home> {
 
 
   final currentUser = FirebaseAuth.instance.currentUser!;
+  final postsColletion = FirebaseFirestore.instance.collection('users_posts');
   final _textPost = TextEditingController();
 
 
@@ -27,6 +28,7 @@ class _HomeState extends State<Home> {
           'userEmail': currentUser.email,
           'message': _textPost.text,
           'timestamp': Timestamp.now(),
+          'amountComments': 0,
           'likes': []
         });
 
@@ -99,6 +101,7 @@ class _HomeState extends State<Home> {
                       return PostCard(
                           message: post['message'], 
                           user: post['userEmail'],
+                          amountComments: post['amountComments'],
                           postId: post.id,
                           likes: List<String>.from(post['likes'] ?? [])
                         );

@@ -109,8 +109,7 @@ class _ProfileState extends State<Profile> {
                         style: TextStyle(color: Colors.grey[500])),
                   ),
                   StreamBuilder(
-                      stream: FirebaseFirestore.instance.
-                          collection("users_posts")
+                      stream: postsColletion
                           .where('userEmail', isEqualTo: currentUser.email)
                           .snapshots(),
                       builder: (context, postSnapshot) {
@@ -127,6 +126,7 @@ class _ProfileState extends State<Profile> {
                                   message: post['message'],
                                   user: post['userEmail'],
                                   postId: post.id,
+                                  amountComments: post['amountComments'],
                                   likes:
                                   List<String>.from(post['likes'] ?? []));
                             },
