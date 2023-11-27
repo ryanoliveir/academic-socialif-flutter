@@ -60,14 +60,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.grey[900],
+        // iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: true,
         title: const Text(
           'Social IF',
-          style: TextStyle(color: Colors.white),
+          // style: TextStyle(color: Colors.white),
         ),
         // actions: [
         //   IconButton(
